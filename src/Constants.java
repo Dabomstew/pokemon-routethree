@@ -1596,7 +1596,7 @@ public class Constants {
         {Type.STEEL, Type.PSYCHIC},
         {Type.PSYCHIC},
         };
-
+    
     static final String[][] poke_abilities = {
         {""},
         {"Overgrow"},
