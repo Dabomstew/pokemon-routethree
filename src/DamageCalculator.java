@@ -199,6 +199,7 @@ public class DamageCalculator {
         } else {
             sb.append(String.format("(%s) ", p.statsStr()));
         }
+        sb.append("["+p.getSpecies().getType1()+"/"+p.getSpecies().getType2()+"] ");
         sb.append("{" + p.getNature().toString() + "} ");
         sb.append("[" + p.getAbility() + "]");
         if(p.getHoldItem() == null || p.getHoldItem().getName().isEmpty()) {

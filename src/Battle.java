@@ -49,29 +49,45 @@ public class Battle extends GameAction {
     }
 
     @Override
-    public void performAction(Pokemon p) {
-        doBattle(p);
+    public void performAction(Party p) {
+        doBattle(p.getCurrentMainPokemon()); // temp
         int game = Settings.game;
         // check for special gym leader badges
         if(game == Settings.FIRERED) {
             if(opponent.equals(Trainer.getTrainer(414))) {
-                p.setAtkBadge(true); //brock
+            	for(Pokemon pkmn : p){
+                pkmn.setAtkBadge(true); //brock
+            	}
             } else if (opponent.equals(Trainer.getTrainer(416))) {
-                p.setSpeBadge(true); //surge
+            	for(Pokemon pkmn : p){
+                pkmn.setSpeBadge(true); //surge
+            	}
             } else if (opponent.equals(Trainer.getTrainer(418))) {
-                p.setDefBadge(true); //koga
+            	for(Pokemon pkmn : p){
+                pkmn.setDefBadge(true); //koga
+            	}
             } else if (opponent.equals(Trainer.getTrainer(419))) {
-                p.setSpcBadge(true); //blaine
+            	for(Pokemon pkmn : p){
+                pkmn.setSpcBadge(true); //blaine
+            	}
             }
         } else if (game == Settings.RUBY || game == Settings.SAPPHIRE || game == Settings.EMERALD) {
             if(opponent.equals(Trainer.getTrainer(265))) {
-                p.setAtkBadge(true); //roxanne
+            	for(Pokemon pkmn : p){
+                pkmn.setAtkBadge(true); //roxanne
+            	}
             } else if (opponent.equals(Trainer.getTrainer(267))) {
-                p.setSpeBadge(true); //wattson
+            	for(Pokemon pkmn : p){
+                pkmn.setSpeBadge(true); //wattson
+            	}
             } else if (opponent.equals(Trainer.getTrainer(269))) {
-                p.setDefBadge(true); //norman
+            	for(Pokemon pkmn : p){
+                pkmn.setDefBadge(true); //norman
+            	}
             } else if (opponent.equals(Trainer.getTrainer(271))) {
-                p.setSpcBadge(true); //tate&liza
+            	for(Pokemon pkmn : p){
+                pkmn.setSpcBadge(true); //tate&liza
+            	}
             }
         }
 //        if (Trainer.getTrainer("FALKNER").equals(opponent)) {

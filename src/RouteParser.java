@@ -171,7 +171,15 @@ public class RouteParser {
             } else {
                 return GameAction.printStatRangesNoBoost;
             }
-        } else if (!firstToken.trim().isEmpty()) {
+        } else if(firstToken.equalsIgnoreCase("setmain")){
+        	if (n < 2) {
+                Main.appendln("ERROR ON LINE " + lineNum);
+                return null;
+            }
+            int num = Integer.parseInt(tokens[1]);
+            return new SetMain(num);
+        }
+        else if (!firstToken.trim().isEmpty()) {
             // attempt to parse as trainer name
             //Battleable b = Trainer.getTrainer(firstToken.toUpperCase());
             Battleable b = null;
