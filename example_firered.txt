@@ -150,10 +150,8 @@ T420 // sabrina
 
 // viridian gym
 T324 // takashi
-setmain 1
-T401 // warren
-T350 // giovanni
+T401 -use 1 -v 2 // warren
+T350 -use 1 -v 2 // giovanni
 
 // viridian rival
-setmain 2
-T436 -xatk 3 
+T436 -order 1,2,6,3,4,5 -complex { | -shift 1 | -shift 2 | | | } -v 2

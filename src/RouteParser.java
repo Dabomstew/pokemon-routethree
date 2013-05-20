@@ -333,13 +333,13 @@ public class RouteParser {
 				}
 				continue;
 			}
-			// split exp
-			else if (s.equalsIgnoreCase("-sxp")) {
-				i++;
-				s = flagTokens[i];// next flag
-				options.setParticipants(Integer.parseInt(s));
-				continue;
-			}
+			// split exp is no longer done manually, heh
+			// else if (s.equalsIgnoreCase("-sxp")) {
+			// i++;
+			// s = flagTokens[i];// next flag
+			// options.setParticipants(Integer.parseInt(s));
+			// continue;
+			// }
 			// print stat ranges if level
 			else if (s.equalsIgnoreCase("-lvranges")) {
 				options.setPrintSRsOnLvl(true);
@@ -364,7 +364,7 @@ public class RouteParser {
 				}
 				List<Integer> orderElems = new ArrayList<Integer>();
 				for (String oe : order) {
-					orderElems.add(Integer.parseInt(oe.trim()));
+					orderElems.add(Integer.parseInt(oe));
 				}
 				for (int ct = 1; ct <= count; ct++) {
 					if (!orderElems.contains(ct)) {
@@ -374,6 +374,59 @@ public class RouteParser {
 					}
 				}
 				options.setTrainerSendoutOrder(orderElems);
+			} else if (s.equalsIgnoreCase("-complex")) {
+				if (!(b instanceof Trainer)) {
+					Main.appendln("ERROR ON LINE " + lineNum);
+					return null;
+				}
+				Trainer t = (Trainer) b;
+				i++;
+				s = flagTokens[i];// next flag
+				if (s.equals("{") == false) {
+					Main.appendln("ERROR ON LINE " + lineNum);
+					return null;
+				}
+				List<ComplexBattleFlags> flags = new ArrayList<ComplexBattleFlags>();
+				i++;
+				s = flagTokens[i];
+				ComplexBattleFlags currentFlags = new ComplexBattleFlags();
+				while (s.equals("}") == false && i < flagTokens.length) {
+					if (s.equals("|")) {
+						// split pokes
+						flags.add(currentFlags);
+						currentFlags = new ComplexBattleFlags();
+					} else if (s.equalsIgnoreCase("-shift")) {
+						i++;
+						s = flagTokens[i];
+						currentFlags.setShiftedInPokemon(Integer.parseInt(s));
+					} else if (s.equalsIgnoreCase("-switch")) {
+						i++;
+						s = flagTokens[i];
+						currentFlags.setSwitchedInPokemon(Integer.parseInt(s));
+					} else if (s.equalsIgnoreCase("-deadswitch")) {
+						i++;
+						s = flagTokens[i];
+						currentFlags.setDeadSwitchPokemon(Integer.parseInt(s));
+					}
+					i++;
+					s = flagTokens[i];
+				}
+				if (!s.equals("}")) {
+					Main.appendln("ERROR ON LINE " + lineNum
+							+ ": complex arg not closed");
+					return null;
+				}
+				flags.add(currentFlags);
+				if (flags.size() != t.getPokemonCount()) {
+					Main.appendln("ERROR ON LINE " + lineNum
+							+ ": not enough complex args for whole party");
+					return null;
+				}
+				options.setComplexFlags(flags);
+			} else if (s.equalsIgnoreCase("-use")) {
+				i++;
+				s = flagTokens[i];// next flag
+				options.setUsedPokemon(Integer.parseInt(s));
 			}
 		}
 		return new Battle(b, options);
