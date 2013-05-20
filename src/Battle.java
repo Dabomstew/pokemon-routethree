@@ -173,7 +173,8 @@ public class Battle extends GameAction {
 		int lastLvl = pokemon.getLevel();
 		appropriatePrinting(pokemon, opponent);
 		if (gainXP) {
-			opponent.battle(pokemon, options, participants);
+			opponent.battle(pokemon, options,
+					Math.max(participants, options.getParticipants()));
 			checkLevelPrinting(pokemon, lastLvl);
 		}
 	}

@@ -332,14 +332,12 @@ public class RouteParser {
 					options.setVerbose(BattleOptions.ALL);
 				}
 				continue;
+			} else if (s.equalsIgnoreCase("-sxp")) {
+				i++;
+				s = flagTokens[i];// next flag
+				options.setParticipants(Integer.parseInt(s));
+				continue;
 			}
-			// split exp is no longer done manually, heh
-			// else if (s.equalsIgnoreCase("-sxp")) {
-			// i++;
-			// s = flagTokens[i];// next flag
-			// options.setParticipants(Integer.parseInt(s));
-			// continue;
-			// }
 			// print stat ranges if level
 			else if (s.equalsIgnoreCase("-lvranges")) {
 				options.setPrintSRsOnLvl(true);
