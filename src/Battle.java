@@ -131,23 +131,32 @@ public class Battle extends GameAction {
 				} else {
 					ComplexBattleFlags cbf = options
 							.getComplexFlags(opponentPokeNum);
+					System.out.println(cbf.getModifiersForLead().summary());
+					System.out.println(cbf.getModifiersForBattler().summary());
 					if (cbf.hasShiftedInPokemon()) {
 						currentMain = party.getPokemon(cbf
 								.getShiftedInPokemon());
+						options.setMod1(new StatModifier());
 					}
+					options.setMod1(options.getMod1().combineWith(
+							cbf.getModifiersForLead()));
 					if (cbf.hasSwitchedInPokemon()) {
 						trainerBattleIndivPokemon(currentMain, opps, true, 2);
 						Pokemon switchedTo = party.getPokemon(cbf
 								.getSwitchedInPokemon());
+						options.setMod1(cbf.getModifiersForBattler());
 						trainerBattleIndivPokemon(switchedTo, opps, true, 2);
 						currentMain = switchedTo;
 					} else if (cbf.hasDeadSwitchPokemon()) {
 						trainerBattleIndivPokemon(currentMain, opps, false, 1);
 						Pokemon switchedTo = party.getPokemon(cbf
 								.getDeadSwitchPokemon());
+						options.setMod1(cbf.getModifiersForBattler());
 						trainerBattleIndivPokemon(switchedTo, opps, true, 1);
 						currentMain = switchedTo;
 					} else {
+						options.setMod1(options.getMod1().combineWith(
+								cbf.getModifiersForBattler()));
 						trainerBattleIndivPokemon(currentMain, opps, true, 1);
 					}
 				}

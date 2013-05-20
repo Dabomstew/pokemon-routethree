@@ -407,6 +407,43 @@ public class RouteParser {
 						i++;
 						s = flagTokens[i];
 						currentFlags.setDeadSwitchPokemon(Integer.parseInt(s));
+					} else if (s.equalsIgnoreCase("-intimidate")) {
+						currentFlags.setIntimidate();
+					} else if (s.equalsIgnoreCase("-xatk")) {
+						i++;
+						s = flagTokens[i];
+						int used = Integer.parseInt(s);
+						for (int use = 0; use < used; use++) {
+							currentFlags.useXAttack();
+						}
+					} else if (s.equalsIgnoreCase("-xdef")) {
+						i++;
+						s = flagTokens[i];
+						int used = Integer.parseInt(s);
+						for (int use = 0; use < used; use++) {
+							currentFlags.useXDefend();
+						}
+					} else if (s.equalsIgnoreCase("-xspc")) {
+						i++;
+						s = flagTokens[i];
+						int used = Integer.parseInt(s);
+						for (int use = 0; use < used; use++) {
+							currentFlags.useXSpecial();
+						}
+					} else if (s.equalsIgnoreCase("-xspd")) {
+						i++;
+						s = flagTokens[i];
+						int used = Integer.parseInt(s);
+						for (int use = 0; use < used; use++) {
+							currentFlags.useXSpDef();
+						}
+					} else if (s.equalsIgnoreCase("-xspe")) {
+						i++;
+						s = flagTokens[i];
+						int used = Integer.parseInt(s);
+						for (int use = 0; use < used; use++) {
+							currentFlags.useXSpeed();
+						}
 					}
 					i++;
 					s = flagTokens[i];
