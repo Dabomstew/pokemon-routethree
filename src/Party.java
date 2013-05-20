@@ -19,11 +19,15 @@ public class Party implements Iterable<Pokemon> {
 	public Pokemon getCurrentMainPokemon() {
 		return partyPokemon.get(currentMain - 1);
 	}
-	
+
 	public void setMainPokemon(int main) {
-		if(main <= partyPokemon.size() && main >= 1) {
+		if (main <= partyPokemon.size() && main >= 1) {
 			currentMain = main;
 		}
+	}
+
+	public Pokemon getPokemon(int number) {
+		return partyPokemon.get(number - 1);
 	}
 
 	@Override

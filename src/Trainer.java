@@ -26,15 +26,15 @@ public class Trainer implements Battleable, Iterable<Pokemon> {
 	}
 
 	@Override
-	public void battle(Pokemon p, BattleOptions options) {
+	public void battle(Pokemon p, BattleOptions options, int participants) {
 		List<Integer> order = options.getTrainerSendoutOrder();
 		if (order == null) {
 			for (Pokemon tp : pokes) {
-				tp.battle(p, options);
+				tp.battle(p, options, participants);
 			}
 		} else {
 			for (Integer current : order) {
-				pokes.get(current - 1).battle(p, options);
+				pokes.get(current - 1).battle(p, options, participants);
 			}
 		}
 	}
@@ -220,5 +220,18 @@ public class Trainer implements Battleable, Iterable<Pokemon> {
 
 	public int getPokemonCount() {
 		return pokes.size();
+	}
+
+	public List<Pokemon> getPokemonInBattleOrder(BattleOptions options) {
+		List<Pokemon> battleOrder = new ArrayList<Pokemon>();
+		List<Integer> order = options.getTrainerSendoutOrder();
+		if (order == null) {
+			battleOrder.addAll(pokes);
+		} else {
+			for (Integer current : order) {
+				battleOrder.add(pokes.get(current - 1));
+			}
+		}
+		return battleOrder;
 	}
 }

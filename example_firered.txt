@@ -1,7 +1,7 @@
 setmain 1
 stats
 // rival
-T327 -v 2 -ydef -1 -xatk -1
+T327 -ydef -1 -xatk -1
 
 // viridian forest
 T104//bug catcher sammy
@@ -30,12 +30,12 @@ um Bubble
 um Withdraw
 
 // cerulean
-T415 -v 2// misty
+T415// misty
 lm Bite
 um TailWhip
 lm WaterPulse
 um WaterGun
-T333 // terry with L18 bulbasaur (order 1423?)
+T333 -v 2 -order 1,4,2,3 // terry with L18 bulbasaur (order 1423?)
 
 // nugget bridge
 T110 // cale
@@ -64,7 +64,7 @@ um MegaPunch
 // left hand spinner: T220 (baily)
 // right hand spinner: T141 (dwayne)
 T423 // tucker
-T416 -v 2// surge
+T416 // surge
 
 // route 9
 T154 // alicia
@@ -98,7 +98,7 @@ T367 // right guard grunt ekans/sandshrew/arbok
 T348 // giovanni 1
 
 // lavender tower
-T430 -xspc 1 -v 2 // rival with ivysaur
+T430 -xspc 1 // rival with ivysaur
 // spinner on heal floor: T448 (Ruth)
 T447 // tammy
 T453 // jennifer
@@ -129,7 +129,7 @@ T419 -xspc 1 // Blaine
 // spinner with arbok: T378
 lm Blizzard
 um Bite
-T433 -v 2 -xspc 2 -xacc // rival with Venusaur
+T433 -xspc 2 -xacc // rival with Venusaur
 T391 // grunt with cubone/drowzee/marowak
 T349 -xspc 1 // giovanni 2
 
@@ -156,4 +156,4 @@ T350 // giovanni
 
 // viridian rival
 setmain 2
-T436 -xatk 3 -v 2
+T436 -xatk 3 

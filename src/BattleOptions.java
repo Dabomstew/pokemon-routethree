@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class BattleOptions {
+
 	private int participants = 1;
 	private boolean printSRsOnLvl = false;
 	private boolean printSRsBoostOnLvl = false;
@@ -12,6 +14,8 @@ public class BattleOptions {
 	public static final int SOME = 1;
 	public static final int ALL = 2;
 	private List<Integer> sendoutOrder = null;
+	private int usedPokemon = -1;
+	private List<ComplexBattleFlags> complexFlags = new ArrayList<ComplexBattleFlags>();
 
 	public BattleOptions() {
 		setMod1(new StatModifier());
@@ -72,6 +76,29 @@ public class BattleOptions {
 
 	public List<Integer> getTrainerSendoutOrder() {
 		return this.sendoutOrder;
+	}
+
+	public int getUsedPokemon() {
+		return this.usedPokemon;
+	}
+
+	public void setUsedPokemon(int num) {
+		this.usedPokemon = num;
+	}
+
+	public ComplexBattleFlags getComplexFlags(int opponentNumber) {
+		if (opponentNumber <= complexFlags.size()) {
+			return complexFlags.get(opponentNumber - 1);
+		}
+		return null;
+	}
+
+	public void setComplexFlags(List<ComplexBattleFlags> flags) {
+		this.complexFlags.addAll(flags);
+	}
+
+	public boolean hasComplexFlags() {
+		return this.complexFlags.size() > 0;
 	}
 
 }
