@@ -131,8 +131,6 @@ public class Battle extends GameAction {
 				} else {
 					ComplexBattleFlags cbf = options
 							.getComplexFlags(opponentPokeNum);
-					System.out.println(cbf.getModifiersForLead().summary());
-					System.out.println(cbf.getModifiersForBattler().summary());
 					if (cbf.hasShiftedInPokemon()) {
 						currentMain = party.getPokemon(cbf
 								.getShiftedInPokemon());
