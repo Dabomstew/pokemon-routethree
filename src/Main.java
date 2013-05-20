@@ -75,7 +75,7 @@ public class Main {
 		Party p = new Party();
 		for (int poke = 1; poke <= pkmnCount; poke++) {
 			String iniSection = "poke" + poke;
-			
+
 			String species = ini.get(iniSection, "species");
 			int level = ini.get(iniSection, "level", int.class);
 			int hpIV = ini.get(iniSection, "hpIV", int.class);
@@ -134,6 +134,8 @@ public class Main {
 		for (GameAction a : actions) {
 			a.performAction(p);
 			if (a instanceof Battle) {
+				// this is broken because I mess with the BattleOptions stat mod
+				// dynamically in the Complex battle flags code now
 				StatModifier sm = ((Battle) a).getMod1();
 				XItems[0] += Math.max(0, sm.getAtkStage());
 				XItems[1] += Math.max(0, sm.getDefStage());
