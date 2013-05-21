@@ -137,7 +137,7 @@ public class Trainer implements Battleable, Iterable<Pokemon> {
 					incrementedNameValue += t.nameValue;
 					incrementedNameValue += s.getNameValue();
 					long PID = (incrementedNameValue << 8)
-							+ (t.isFemale ? 0x77 : 0x88);
+							+ (t.isFemale ? 0x78 : 0x88);
 					// moveset not specified
 					if (pokeDataType == 0) {
 						Pokemon pk = new Pokemon(s, level, ivs,
